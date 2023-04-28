@@ -1,26 +1,57 @@
-const ContactForm  = ({ name, onChange }) => {
-  return (
-    <div>
-      <form >
-        <h1>Phonebook</h1>
-        <input
-          type="text"
-          name="name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-          value={name}
-          onChange={onChange}
-              />
-              <button type="submit"></button>
+import React, { Component } from 'react';
+
+export default class ContactForm extends Component {
+  state = {
+    name: '',
+    number: '',
+  };
+
+  handleInputChange = e => {
+    const { name, value } = e.currentTarget;
+
+    this.setState({ [name]: value });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.onSubmit(this.state);
+    this.reset();
+  };
+
+  reset = () => {
+    this.setState({ name: '', number: '' });
+  };
+
+  render() {
+    const { handleSubmit, state, handleInputChange } = this;
+    return (
+      <form onSubmit={handleSubmit}>
+        <label>
+          Name
+          <input
+            type="text"
+            name="name"
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            required
+            value={state.name}
+            onChange={handleInputChange}
+          />
+        </label>
+        <label>
+          Number
+          <input
+            type="tel"
+            name="number"
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            required
+            value={state.number}
+            onChange={handleInputChange}
+          />
+        </label>
+        <button type="submit">Add contact</button>
       </form>
-
-      <ul>
-        <h2>Contacts</h2>
-        <li></li>
-      </ul>
-    </div>
-  );
-};
-
-export default ContactForm ;
+    );
+  }
+}

@@ -1,42 +1,55 @@
 import React, { Component } from 'react';
-import Form from './ContactForm';
+import ContactForm from './ContactForm';
+import ContactList from './ContactList';
 
-
-
-
-
-
+import { nanoid } from 'nanoid';
 export class App extends Component {
-
   state = {
-    contacts: [],
-    name: '',
+    contacts: [
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ],
   };
 
-  handleInputChange = e => {
-    this.setState({ name: e.currentTarget.value })}
+  // formSubmitHandler = data => {
+  //   console.log(data);
+  //   this.setState(prevState => {
+  //     prevState.contacts.push(data);
+  //   });
+  // };
 
-  // handleSubmit = e => {
-  //   this.setState({contacts.push(e.currentTarget.value)})
-  // }
+  addContact = ({ name, number }) => {
+    const contact = {
+      id: nanoid(),
+      name,
+      number,
+    };
+
+    this.setState(({ contacts }) => ({
+      contacts: [contact, ...contacts],
+    }));
+  };
 
   render() {
     return (
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: 20,
-          color: '#010101',
-        }}
-      >
-        <Form
-          onChange={this.handleInputChange}
-          contacts={this.state.contacts}
-          name={this.state.name}
-        ></Form>
+      <div>
+        <h1>Phonebook</h1>
+        <ContactForm
+          onSubmit={this.addContact}
+        ></ContactForm>
+        <h2>Contacts</h2>
+        <ContactList contacts={this.state.contacts}></ContactList>
       </div>
     );
   }
 }
+
+// style={{
+//         display: 'flex',
+//         justifyContent: 'center',
+//         alignItems: 'center',
+//         fontSize: 20,
+//         color: '#010101',
+//       }}
