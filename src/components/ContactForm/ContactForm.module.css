@@ -12,7 +12,7 @@
 }
 
 .contactForm__input {
- width: 100%;
+  width: 100%;
   padding: 10px;
   font-size: 16px;
   border-radius: 5px;
@@ -35,7 +35,3 @@
 .contactForm__button:hover {
   background-color: #0069d9;
 }
-
-
-
-
