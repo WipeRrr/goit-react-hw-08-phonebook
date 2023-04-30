@@ -1,0 +1,41 @@
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.contactForm__label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+.contactForm__input {
+ width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 2px solid #ccc;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+.contactForm__button {
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contactForm__button:hover {
+  background-color: #0069d9;
+}
+
+
+
+

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import css from './ContactForm.module.css';
+
 export default class ContactForm extends Component {
   state = {
     name: '',
@@ -25,10 +27,11 @@ export default class ContactForm extends Component {
   render() {
     const { handleSubmit, state, handleInputChange } = this;
     return (
-      <form onSubmit={handleSubmit}>
-        <label>
+      <form className={css.contactForm} onSubmit={handleSubmit}>
+        <label className={css.contactForm__label}>
           Name
           <input
+            className={css.contactForm__input}
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -38,9 +41,10 @@ export default class ContactForm extends Component {
             onChange={handleInputChange}
           />
         </label>
-        <label>
+        <label className={css.contactForm__label}>
           Number
           <input
+            className={css.contactForm__input}
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -50,7 +54,9 @@ export default class ContactForm extends Component {
             onChange={handleInputChange}
           />
         </label>
-        <button type="submit">Add contact</button>
+        <button className={css.contactForm__button} type="submit">
+          Add contact
+        </button>
       </form>
     );
   }
