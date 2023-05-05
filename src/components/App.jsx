@@ -12,6 +12,21 @@ export class App extends Component {
     filter: '',
   };
 
+  componentDidUpdate(prevState) {
+    const { contacts } = this.state;
+    if (contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(contacts));
+    }
+  }
+
+  componentDidMount() {
+    const contacts = localStorage.getItem('contacts');
+    const parsedContacts = JSON.parse(contacts);
+    if (parsedContacts) {
+      this.setState({ contacts: parsedContacts });
+    }
+  }
+
   addContact = ({ name, number }) => {
     const { contacts } = this.state;
 
@@ -72,13 +87,3 @@ export class App extends Component {
     );
   }
 }
-
-//  style={{
-//           display: 'flex',
-//           justifyContent: 'center',
-//           flexDirection:'column',
-//           alignItems: 'center',
-//           fontSize: 20,
-//           color: '#010101',
-
-//         }}
