@@ -5,10 +5,6 @@ import css from './ContactForm.module.css';
 export default function ContactForm({ onSubmit }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  // state = {
-  //   name: '',
-  //   number: '',
-  // };
 
   const handleInputChange = e => {
     const { name, value } = e.target;
@@ -32,7 +28,6 @@ export default function ContactForm({ onSubmit }) {
     setNumber('');
   };
 
-  // const { handleSubmit, state, handleInputChange } = this;
   return (
     <form className={css.contactForm} onSubmit={handleSubmit}>
       <label className={css.contactForm__label}>
