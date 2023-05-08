@@ -1,10 +1,10 @@
-import { UseState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import css from './ContactForm.module.css';
 
 export default function ContactForm(onSubmit) {
-  const [name, setName] = UseState('');
-  const [number, setNumber] = UseState('');
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
   // state = {
   //   name: '',
   //   number: '',
