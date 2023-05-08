@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import css from './ContactForm.module.css';
 
-export default function ContactForm(onSubmit) {
+export default function ContactForm({ onSubmit }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   // state = {
@@ -11,14 +11,14 @@ export default function ContactForm(onSubmit) {
   // };
 
   const handleInputChange = e => {
-    const { name, value } = e.currentTarget;
+    const { name, value } = e.target;
 
     switch (name) {
       case 'name':
         setName(value);
         break;
       case 'number':
-        setName(value);
+        setNumber(value);
         break;
       default:
         break;

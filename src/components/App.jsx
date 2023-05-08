@@ -62,11 +62,11 @@ export function App() {
     setContacts([contact, ...contacts]);
   };
 
-  const deleteContact = contactId => {
+  const deleteContact = id => {
     // this.setState(prevState => ({
     //   contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     // }));
-    setFilter(contacts.filter(contact => contact.id !== contactId));
+    setContacts(contacts.filter(contact => contact.id !== id));
     setFilter('');
   };
 
