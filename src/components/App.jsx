@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ContactForm from './ContactForm';
 import ContactList from './ContactList';
 import initialContacts from '../data/contacts';
@@ -12,17 +12,14 @@ export function App() {
   //   filter: '',
   // };
 
-  const [contacts, setContacts] = useState(initialContacts);
+  const [contacts, setContacts] = useState(
+    ()=>{ return JSON.parse(localStorage.getItem('contacts')) ?? initialContacts}
+  );
   const [filter, setFilter] = useState('');
 
-  // const [contacts, setContacts] = useState(
-  //   JSON.parse(localStorage.getItem('contacts')) ?? initialContacts
-  // );
-  // const [filter, setFilter] = useState('');
-
-  // useEffect(() => {
-  //   localStorage.setItem('contacts', JSON.stringify(contacts));
-  // }, [contacts]);
+  useEffect(() => {
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+  }, [contacts]);
 
   // componentDidUpdate(prevState) {
   //   const { contacts } = this.state;
@@ -122,3 +119,12 @@ export function App() {
 //       contacts: [contact, ...contacts],
 //     }));
 //   };
+
+// const [contacts, setContacts] = useState(
+//   JSON.parse(localStorage.getItem('contacts')) ?? initialContacts
+// );
+// const [filter, setFilter] = useState('');
+
+// useEffect(() => {
+//   localStorage.setItem('contacts', JSON.stringify(contacts));
+// }, [contacts]);
