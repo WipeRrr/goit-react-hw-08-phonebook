@@ -6,7 +6,7 @@ import storage from 'redux-persist/lib/storage';
 import initialContacts from '../data/contacts';
 
 
-//  export?
+
 const sliceContacts = createSlice({
   name: 'contacts',
   initialState: {
