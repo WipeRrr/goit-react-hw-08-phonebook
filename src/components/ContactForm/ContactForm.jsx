@@ -2,14 +2,13 @@ import { useState } from 'react';
 import css from './ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../Redux/operations';
-import { nanoid } from 'nanoid';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { selectContacts, selectIsLoading } from 'Redux/selectors';
 import Loader from '../../components/Loader/Loader';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [phone, setPhone] = useState('');
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
@@ -21,8 +20,8 @@ export default function ContactForm() {
       case 'name':
         setName(value);
         break;
-      case 'number':
-        setNumber(value);
+      case 'phone':
+        setPhone(value);
         break;
       default:
         break;
@@ -31,7 +30,6 @@ export default function ContactForm() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const id = nanoid();
 
     if (
       contacts.find(
@@ -44,10 +42,10 @@ export default function ContactForm() {
         position: 'center-top',
       });
     } else {
-      dispatch(addContact({ id, name, number }));
+      dispatch(addContact({ name, phone }));
     }
     setName('');
-    setNumber('');
+    setPhone('');
   };
 
   return (
@@ -72,11 +70,11 @@ export default function ContactForm() {
           <input
             className={css.contactForm__input}
             type="tel"
-            name="number"
+            name="phone"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
-            value={number}
+            value={phone}
             onChange={handleInputChange}
           />
         </label>

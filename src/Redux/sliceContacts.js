@@ -25,7 +25,7 @@ const handleAddContactSuccess = (state, action) => {
     ...state,
     isLoading: false,
     error: null,
-    items: [action.payload, ...state.items],
+    items: [...state.items,action.payload],
   };
 };
 
