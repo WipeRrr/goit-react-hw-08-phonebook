@@ -32,3 +32,9 @@
 .contactList__item__button:hover {
   background-color: #0069d9;
 }
+
+.contactList__item__button:disabled,
+.contactList__item__button[disabled]{
+  background-color: #cccccc;
+  color: #666666;
+}

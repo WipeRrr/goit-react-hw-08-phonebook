@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../Redux/operations';
 import { nanoid } from 'nanoid';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { selectContacts,selectIsLoading } from 'Redux/selectors';
+import { selectContacts, selectIsLoading } from 'Redux/selectors';
+import Loader from '../../components/Loader/Loader';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
@@ -51,7 +52,7 @@ export default function ContactForm() {
 
   return (
     <>
-      {isLoading && <h2>Load....</h2>}
+      {isLoading && <Loader className={css.contactForm__label} />}
       <form className={css.contactForm} onSubmit={handleSubmit}>
         <label className={css.contactForm__label}>
           Name
