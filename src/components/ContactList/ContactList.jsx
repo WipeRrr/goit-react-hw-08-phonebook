@@ -1,13 +1,13 @@
 import css from './ContactList.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchContacts, deleteContact } from '../../Redux/operations';
+import { fetchContacts, deleteContact } from '../../Redux/contacts/operations';
 import { useEffect } from 'react';
 import {
   selectError,
   selectVisibleContacts,
   selectIsLoading,
   selectContacts,
-} from '../../Redux/selectors';
+} from '../../Redux/contacts/selectors';
 import { ClipLoader } from 'react-spinners';
 const ContactList = () => {
   const filteredContacts = useSelector(selectVisibleContacts);

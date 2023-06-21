@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import css from './ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../Redux/operations';
+import { addContact } from '../../Redux/contacts/operations';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { selectContacts, selectIsLoading } from 'Redux/selectors';
+import { selectContacts, selectIsLoading } from 'Redux/contacts/selectors';
 import Loader from '../../components/Loader/Loader';
 
 export default function ContactForm() {
