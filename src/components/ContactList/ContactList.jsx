@@ -1,7 +1,7 @@
 import css from './ContactList.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchContacts, deleteContact } from '../../Redux/contacts/operations';
-import { useEffect } from 'react';
+import {  deleteContact } from '../../Redux/contacts/operations';
+// import { useEffect } from 'react';
 import {
   selectError,
   selectVisibleContacts,
@@ -16,18 +16,18 @@ const ContactList = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
 
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchContacts());
+  // }, [dispatch]);
 
   return (
     <>
       {error && <p>{error}</p>}
       <ul className={css.contactList}>
-        {filteredContacts.map(({ id, name, phone }) => (
+        {filteredContacts.map(({ id, name, number }) => (
           <li className={css.contactList__item} key={id}>
             {name}:
-            <span className={css.contactList__item__number}>{phone}</span>
+            <span className={css.contactList__item__number}>{number}</span>
             <button
               className={css.contactList__item__button}
               type="button"
