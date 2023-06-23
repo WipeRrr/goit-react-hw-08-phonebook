@@ -1,31 +1,53 @@
-// import { useAuth } from 'hooks';
-import Home from 'pages/Home';
-import { AppBar } from './AppBar/AppBar';
+import { useAuth } from 'hooks';
+// import Home from 'pages/Home';
 import { Route, Routes } from 'react-router-dom';
-import Register from 'pages/Register';
-import Login from 'pages/Login';
-import Contacts from 'pages/Contacts';
 import { refreshUser } from 'Redux/auth/operations';
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, lazy } from 'react';
+import { Layout } from './Layout';
+import { PrivateRoute } from './PrivateRoute';
+import { RestrictedRoute } from './RestrictedRoute';
+
+
+const Home = lazy(() => import('../pages/Home'));
+const Register = lazy(() => import('../pages/Register'));
+const Login = lazy(() => import('../pages/Login'));
+const Contacts = lazy(() => import('../pages/Contacts'));
 
 export function App() {
   const dispatch = useDispatch();
-  // const { isRefreshing } = useAuth();
+  const { isRefreshing } = useAuth();
 
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
-    <>
-      <AppBar />
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/register" element={<Register />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/contacts" element={<Contacts />}></Route>
-      </Routes>
-    </>
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<Register />} />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<Login />} />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<Contacts />} />
+          }
+        />
+      </Route>
+    </Routes>
   );
-}
+};
+
