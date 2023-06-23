@@ -11,7 +11,7 @@ import { RestrictedRoute } from './RestrictedRoute';
 const Home = lazy(() => import('../pages/Home'));
 const Register = lazy(() => import('../pages/Register'));
 const Login = lazy(() => import('../pages/Login'));
-const Contacts = lazy(() => import('../pages/Contacts'));
+const Contacts = lazy(() => import('../pages/Contacts/Contacts'));
 
 export function App() {
   const dispatch = useDispatch();
