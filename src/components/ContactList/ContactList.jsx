@@ -1,7 +1,7 @@
 import css from './ContactList.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import {  deleteContact } from '../../Redux/contacts/operations';
-// import { useEffect } from 'react';
+import { deleteContact } from '../../Redux/contacts/operations';
+
 import {
   selectError,
   selectVisibleContacts,
@@ -15,10 +15,6 @@ const ContactList = () => {
   const error = useSelector(selectError);
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
-
-  // useEffect(() => {
-  //   dispatch(fetchContacts());
-  // }, [dispatch]);
 
   return (
     <>

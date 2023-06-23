@@ -1,5 +1,5 @@
 import { useAuth } from 'hooks';
-// import Home from 'pages/Home';
+
 import { Route, Routes } from 'react-router-dom';
 import { refreshUser } from 'Redux/auth/operations';
 import { useDispatch } from 'react-redux';
@@ -7,7 +7,6 @@ import { useEffect, lazy } from 'react';
 import { Layout } from './Layout';
 import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
-
 
 const Home = lazy(() => import('../pages/Home'));
 const Register = lazy(() => import('../pages/Register'));
@@ -49,5 +48,4 @@ export function App() {
       </Route>
     </Routes>
   );
-};
-
+}
