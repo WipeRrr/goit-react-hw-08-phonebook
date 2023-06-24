@@ -1,3 +1,5 @@
+
+
 const styles = {
   container: {
     display: 'flex',
@@ -11,17 +13,17 @@ const styles = {
     fontSize: '36px',
     fontWeight: 'bold',
     marginBottom: '20px',
+    color: 'white',
   },
 };
 
 export default function Home() {
   return (
     <div style={styles.container}>
+      {/* <ParticlesLines /> */}
       <h1 style={styles.title}>
         Phonebook welcome page
-        <span role="img" aria-label="Greeting icon">
-          
-        </span>
+        <span role="img" aria-label="Greeting icon"></span>
       </h1>
     </div>
   );
