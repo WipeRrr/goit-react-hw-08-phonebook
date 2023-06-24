@@ -13,7 +13,8 @@
   font-size: 16px;
   background-color: #f2f2f2;
   border-radius: 5px;
-  color:#000
+  background-color: #cfc1c117;
+  color:#fff
 }
 
 .contactList__item__number {
